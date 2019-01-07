@@ -17,6 +17,7 @@
 package com.android.music;
 
 import android.Manifest.permission;
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.AlertDialog;
@@ -294,6 +295,7 @@ public class MediaPlaybackService extends Service {
             }
         }
     };
+    @SuppressLint("HandlerLeak")
     private Handler mMediaplayerHandler = new Handler() {
         float mCurrentVolume = 1.0f;
 
@@ -446,6 +448,7 @@ public class MediaPlaybackService extends Service {
                     .sendToTarget();
         }
     };
+    @SuppressLint("HandlerLeak")
     private Handler mDelayedStopHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -517,6 +520,7 @@ public class MediaPlaybackService extends Service {
             }
         }
     };
+    @SuppressLint("HandlerLeak")
     private Handler mMediaButtonHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -1727,110 +1731,149 @@ public class MediaPlaybackService extends Service {
     }
 
     private void updateNotification() {
-        views = new RemoteViews(getPackageName(), R.layout.statusbar_appwidget_s);
-        viewsLarge = new RemoteViews(getPackageName(), R.layout.statusbar_appwidget_l);
-        if (getApplicationContext().getResources().getBoolean(R.bool.exit_in_notification)) {
-            views.setViewVisibility(R.id.exit, View.VISIBLE);
-            viewsLarge.setViewVisibility(R.id.exit, View.VISIBLE);
-        }
-        Bitmap icon = MusicUtils.getArtwork(this, getAudioId(), getAlbumId(),
-                true);
-        if (icon == null) {
-            views.setImageViewResource(R.id.icon, R.drawable.album_cover_background);
-            viewsLarge.setImageViewResource(R.id.icon, R.drawable.album_cover_background);
-        } else {
-            views.setImageViewBitmap(R.id.icon, icon);
-            viewsLarge.setImageViewBitmap(R.id.icon, icon);
-        }
-        Intent prevIntent = new Intent(PREVIOUS_ACTION);
-        PendingIntent prevPendingIntent = PendingIntent.getBroadcast(this,
-                0 /* no requestCode */, prevIntent, 0 /* no flags */);
-        views.setOnClickPendingIntent(R.id.prev, prevPendingIntent);
-        viewsLarge.setOnClickPendingIntent(R.id.prev, prevPendingIntent);
-
-        Intent toggleIntent = new Intent(MediaPlaybackService.TOGGLEPAUSE_ACTION);
-        PendingIntent togglePendingIntent = PendingIntent.getBroadcast(this,
-                0 /* no requestCode */, toggleIntent, 0 /* no flags */);
-        views.setOnClickPendingIntent(R.id.pause, togglePendingIntent);
-        viewsLarge.setOnClickPendingIntent(R.id.pause, togglePendingIntent);
-
-        Intent nextIntent = new Intent(NEXT_ACTION);
-        PendingIntent nextPendingIntent = PendingIntent.getBroadcast(this,
-                0 /* no requestCode */, nextIntent, 0 /* no flags */);
-        views.setOnClickPendingIntent(R.id.next, nextPendingIntent);
-        viewsLarge.setOnClickPendingIntent(R.id.next, nextPendingIntent);
-
-        Intent exitIntent = new Intent(EXIT_ACTION);
-        PendingIntent exitPendingIntent = PendingIntent.getBroadcast(this,
-                0 /* no requestCode */, exitIntent, 0 /* no flags */);
-        views.setOnClickPendingIntent(R.id.exit, exitPendingIntent);
-        viewsLarge.setOnClickPendingIntent(R.id.exit, exitPendingIntent);
-
-        if (getAudioId() < 0) {
-            // streaming
-            views.setTextViewText(R.id.trackname, getPath());
-            views.setTextViewText(R.id.artist, null);
-            views.setTextViewText(R.id.album, null);
-
-            viewsLarge.setTextViewText(R.id.trackname, getPath());
-            viewsLarge.setTextViewText(R.id.artist, null);
-            viewsLarge.setTextViewText(R.id.album, null);
-        } else {
-            String artist = getArtistName();
-            views.setTextViewText(R.id.trackname, getTrackName());
-            viewsLarge.setTextViewText(R.id.trackname, getTrackName());
-            if (artist == null || artist.equals(MediaStore.UNKNOWN_STRING)) {
-                artist = getString(R.string.unknown_artist_name);
-            }
-            String album = getAlbumName();
-            if (album == null || album.equals(MediaStore.UNKNOWN_STRING)) {
-                album = getString(R.string.unknown_album_name);
-            }
-            views.setTextViewText(R.id.artist, artist);
-            views.setTextViewText(R.id.album, album);
-            viewsLarge.setTextViewText(R.id.artist, artist);
-            viewsLarge.setTextViewText(R.id.album, album);
-        }
-
-        views.setImageViewResource(R.id.pause,
-                (isPlaying() ? R.drawable.play_pause
-                        : R.drawable.play_arrow));
-
-        viewsLarge.setImageViewResource(R.id.pause,
-                (isPlaying() ? R.drawable.play_pause
-                        : R.drawable.play_arrow));
-
-        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder status1 = new NotificationCompat.Builder(
-                this,CHANNEL_ONE_ID);
-        status1.setContent(views);
-        status1.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(
-                "com.android.music.PLAYBACK_VIEWER")
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0));
-        status1.setSmallIcon(R.drawable.stat_notify_musicplayer);
+        Bitmap icon = MusicUtils.getArtwork(this, getAudioId(), getAlbumId(), true);
+        NotificationManager mNotificationManager = (NotificationManager)
+                getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this,
+                CHANNEL_ONE_ID);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = null;
-
-            notificationChannel = new NotificationChannel(CHANNEL_ONE_ID,
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ONE_ID,
                     CHANNEL_ONE_NAME, NotificationManager.IMPORTANCE_LOW);
-            notificationChannel.enableLights(true);
-            notificationChannel.setLightColor(Color.GRAY);
-            notificationChannel.setShowBadge(true);
-            notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-            nm.createNotificationChannel(notificationChannel);
-            status1.setChannelId(CHANNEL_ONE_ID);
-        }
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.GRAY);
+            mChannel.setShowBadge(true);
+            mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
 
-        status = status1.build();
-        status.bigContentView = viewsLarge;
-        if (isPlaying()) {
-            status.flags |= Notification.FLAG_ONGOING_EVENT;
+            mBuilder
+                    .addAction(R.drawable.pre, "Previous", getPreviousTrackIntent())
+                    .addAction(isPlaying() ? R.drawable.play_pause
+                            : R.drawable.play_arrow, "PlayPause", getPlayPauseIntent())
+                    .addAction(R.drawable.nex, "Next", getNextTrackIntent())
+                    .addAction(R.drawable.close, "Exit", getExitIntent())
+                    .setColor(Color.GRAY)
+                    .setContentIntent(getContentIntent())
+                    .setContentTitle(getTrackName())
+                    .setContentText(getArtistName())
+                    .setCategory(NotificationCompat.CATEGORY_TRANSPORT)
+                    .setChannelId(CHANNEL_ONE_ID)
+                    .setLargeIcon(icon)
+                    .setOngoing(true)
+                    .setPriority(NotificationCompat.PRIORITY_MAX)
+                    .setSmallIcon(R.drawable.app_music)
+                    .setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
+                            .setShowActionsInCompactView(0, 1, 2)
+                            .setMediaSession(mSessionCompat.getSessionToken())
+                            .setShowCancelButton(true))
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+            mNotificationManager.createNotificationChannel(mChannel);
+            mNotificationManager.notify(0, mBuilder.build());
         } else {
-            status.flags = 0;
-        }
-        nm.notify(PLAYBACKSERVICE_STATUS, status);
+            views = new RemoteViews(getPackageName(), R.layout.statusbar_appwidget_s);
+            viewsLarge = new RemoteViews(getPackageName(), R.layout.statusbar_appwidget_l);
+            if (getApplicationContext().getResources().getBoolean(R.bool.exit_in_notification)) {
+                views.setViewVisibility(R.id.exit, View.VISIBLE);
+                viewsLarge.setViewVisibility(R.id.exit, View.VISIBLE);
+            }
 
+            if (icon == null) {
+                views.setImageViewResource(R.id.icon, R.drawable.album_cover_background);
+                viewsLarge.setImageViewResource(R.id.icon, R.drawable.album_cover_background);
+            } else {
+                views.setImageViewBitmap(R.id.icon, icon);
+                viewsLarge.setImageViewBitmap(R.id.icon, icon);
+            }
+
+            views.setOnClickPendingIntent(R.id.prev, getPreviousTrackIntent());
+            viewsLarge.setOnClickPendingIntent(R.id.prev, getPreviousTrackIntent());
+
+            views.setOnClickPendingIntent(R.id.pause, getPlayPauseIntent());
+            viewsLarge.setOnClickPendingIntent(R.id.pause, getPlayPauseIntent());
+
+            views.setOnClickPendingIntent(R.id.next, getNextTrackIntent());
+            viewsLarge.setOnClickPendingIntent(R.id.next, getNextTrackIntent());
+
+            views.setOnClickPendingIntent(R.id.exit, getExitIntent());
+            viewsLarge.setOnClickPendingIntent(R.id.exit, getExitIntent());
+
+            if (getAudioId() < 0) {
+                // streaming
+                views.setTextViewText(R.id.trackname, getPath());
+                views.setTextViewText(R.id.artist, null);
+                views.setTextViewText(R.id.album, null);
+
+                viewsLarge.setTextViewText(R.id.trackname, getPath());
+                viewsLarge.setTextViewText(R.id.artist, null);
+                viewsLarge.setTextViewText(R.id.album, null);
+            } else {
+                String artist = getArtistName();
+                views.setTextViewText(R.id.trackname, getTrackName());
+                viewsLarge.setTextViewText(R.id.trackname, getTrackName());
+                if (artist == null || artist.equals(MediaStore.UNKNOWN_STRING)) {
+                    artist = getString(R.string.unknown_artist_name);
+                }
+                String album = getAlbumName();
+                if (album == null || album.equals(MediaStore.UNKNOWN_STRING)) {
+                    album = getString(R.string.unknown_album_name);
+                }
+                views.setTextViewText(R.id.artist, artist);
+                views.setTextViewText(R.id.album, album);
+                viewsLarge.setTextViewText(R.id.artist, artist);
+                viewsLarge.setTextViewText(R.id.album, album);
+            }
+
+            views.setImageViewResource(R.id.pause,
+                    (isPlaying() ? R.drawable.play_pause
+                            : R.drawable.play_arrow));
+
+            viewsLarge.setImageViewResource(R.id.pause,
+                    (isPlaying() ? R.drawable.play_pause
+                            : R.drawable.play_arrow));
+
+            mBuilder.setContent(views);
+            mBuilder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(
+                    "com.android.music.PLAYBACK_VIEWER")
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0));
+            mBuilder.setSmallIcon(R.drawable.app_music);
+            status = mBuilder.build();
+            status.bigContentView = viewsLarge;
+            if (isPlaying()) {
+                status.flags |= Notification.FLAG_ONGOING_EVENT;
+            } else {
+                status.flags = 0;
+            }
+            mNotificationManager.notify(PLAYBACKSERVICE_STATUS, status);
+        }
+    }
+
+    private PendingIntent getNextTrackIntent() {
+        Intent nextIntent = new Intent(NEXT_ACTION);
+        return PendingIntent.getBroadcast(this,
+                0 /* no requestCode */, nextIntent, 0 /* no flags */);
+    }
+
+    private PendingIntent getPreviousTrackIntent() {
+        Intent nextIntent = new Intent(PREVIOUS_ACTION);
+        return PendingIntent.getBroadcast(this,
+                0 /* no requestCode */, nextIntent, 0 /* no flags */);
+    }
+
+    private PendingIntent getPlayPauseIntent() {
+        Intent nextIntent = new Intent(TOGGLEPAUSE_ACTION);
+        return PendingIntent.getBroadcast(this,
+                0 /* no requestCode */, nextIntent, 0 /* no flags */);
+    }
+
+    private PendingIntent getExitIntent() {
+        Intent nextIntent = new Intent(EXIT_ACTION);
+        return PendingIntent.getBroadcast(this,
+                0 /* no requestCode */, nextIntent, 0 /* no flags */);
+    }
+
+    private PendingIntent getContentIntent() {
+        Intent action = new Intent(this, MusicBrowserActivity.class);
+        action.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return PendingIntent.getActivity(this, 0, action, 0);
     }
 
     private void stop(boolean remove_status_icon) {
@@ -1845,8 +1888,10 @@ public class MediaPlaybackService extends Service {
         mCurrentTrackInfo = null;
         if (remove_status_icon) {
             gotoIdleState();
-            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            nm.cancel(PLAYBACKSERVICE_STATUS);
+            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) {
+                NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                nm.cancel(PLAYBACKSERVICE_STATUS);
+            }
         } else {
             stopForeground(false);
         }
@@ -1880,22 +1925,24 @@ public class MediaPlaybackService extends Service {
                 } else {
                     updateNotification();
                 }
-                notifyChange(PLAYSTATE_CHANGED);
-                saveBookmarkIfNeeded();
-                // Reset notification pause function to play function
-                views.setImageViewResource(R.id.pause,
-                        R.drawable.play_arrow);
-                viewsLarge.setImageViewResource(R.id.pause,
-                        R.drawable.play_arrow);
-                Intent playIntent = new Intent(TOGGLEPAUSE_ACTION);
-                PendingIntent playPendingIntent = PendingIntent
-                        .getBroadcast(this, 0 /* no requestCode */, playIntent,
-                                0 /* no flags */);
-                views.setOnClickPendingIntent(R.id.pause, playPendingIntent);
-                viewsLarge.setOnClickPendingIntent(R.id.pause, playPendingIntent);
-                status.flags = 0;
-                NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                nm.notify(PLAYBACKSERVICE_STATUS, status);
+                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) {
+                    notifyChange(PLAYSTATE_CHANGED);
+                    saveBookmarkIfNeeded();
+                    // Reset notification pause function to play function
+                    views.setImageViewResource(R.id.pause,
+                            R.drawable.play_arrow);
+                    viewsLarge.setImageViewResource(R.id.pause,
+                            R.drawable.play_arrow);
+                    Intent playIntent = new Intent(TOGGLEPAUSE_ACTION);
+                    PendingIntent playPendingIntent = PendingIntent
+                            .getBroadcast(this, 0 /* no requestCode */, playIntent,
+                                    0 /* no flags */);
+                    views.setOnClickPendingIntent(R.id.pause, playPendingIntent);
+                    viewsLarge.setOnClickPendingIntent(R.id.pause, playPendingIntent);
+                    status.flags = 0;
+                    NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    nm.notify(PLAYBACKSERVICE_STATUS, status);
+                }
             }
         }
     }
