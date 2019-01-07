@@ -28,8 +28,7 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="128dp"
-    android:background="@drawable/appwidget_layout_bg">
+    android:layout_height="128dp">
 
     <ImageView
         android:id="@+id/icon"
@@ -37,25 +36,26 @@
         android:layout_height="116dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="6dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/album_cover_background"></ImageView>
+        android:scaleType="centerCrop"
+        android:src="@drawable/album_cover_background" />
 
     <ImageButton
         android:id="@+id/exit"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorTransparent"
+        android:layout_margin="8dp"
+        android:background="@null"
         android:src="@drawable/close"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/music_info"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_above="@+id/split"
-        android:layout_marginEnd="44dp"
-        android:layout_toRightOf="@id/icon"
+        android:layout_above="@+id/control"
+        android:layout_marginEnd="36dp"
+        android:layout_toEndOf="@id/icon"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingTop="7dp"
@@ -67,12 +67,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:alpha="0.8"
             android:ellipsize="marquee"
             android:focusable="true"
             android:singleLine="true"
-            android:textColor="#000000"
-            android:textSize="16dp" />
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/artist"
@@ -80,14 +79,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:alpha="0.55"
             android:ellipsize="marquee"
             android:maxLines="2"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="@string/widget_initial_text"
-            android:textColor="#000000"
-            android:textSize="14dp" />
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/album"
@@ -95,64 +93,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:alpha="0.55"
             android:ellipsize="marquee"
             android:maxLines="2"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:textColor="#000000"
-            android:textSize="14dp" />
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="14sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/split"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/control"
-        android:layout_alignStart="@+id/music_info"
-        android:layout_marginEnd="6dp"
-        android:alpha="0.1"
-        android:background="#000000" />
 
     <RelativeLayout
         android:id="@+id/control"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/music_info"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toEndOf="@id/icon"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
 
         <ImageButton
             android:id="@+id/prev"
             style="@style/ClickBackground"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_centerVertical="true"
-            android:layout_marginRight="28dp"
-            android:layout_toLeftOf="@+id/pause"
-            android:src="@drawable/notification_prev"
-            android:theme="@android:style/Theme.DeviceDefault.Light" />
+            android:layout_marginEnd="24dp"
+            android:layout_toStartOf="@+id/pause"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/pre" />
 
         <ImageButton
             android:id="@+id/pause"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/icon_play_pause_backgroud"
+            android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/notification_play" />
+            android:src="@drawable/play_arrow" />
 
         <ImageButton
             android:id="@+id/next"
             style="@style/ClickBackground"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="28dp"
-            android:layout_toRightOf="@id/pause"
-            android:src="@drawable/notification_next"
-            android:theme="@android:style/Theme.DeviceDefault.Light" />
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@id/pause"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/nex" />
     </RelativeLayout>
 
 </RelativeLayout>

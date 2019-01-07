@@ -664,11 +664,8 @@ public class MediaPlaybackService extends Service {
         // system will relaunch it. Make sure it gets stopped again in that case.
         Message msg = mDelayedStopHandler.obtainMessage();
         mDelayedStopHandler.sendMessageDelayed(msg, IDLE_DELAY);
-
         mControlInStatusBar = getApplicationContext().getResources().getBoolean(R.bool.control_in_statusbar);
-
-        updateNotification();
-
+        //updateNotification();
     }
 
     @Override
@@ -1705,11 +1702,11 @@ public class MediaPlaybackService extends Service {
         if (views != null && viewsLarge != null && status != null) {
             // Reset notification play function to pause function
             views.setImageViewResource(R.id.pause,
-                    isPlaying() ? R.drawable.notification_pause
-                            : R.drawable.notification_play);
+                    isPlaying() ? R.drawable.play_pause
+                            : R.drawable.play_arrow);
             viewsLarge.setImageViewResource(R.id.pause,
-                    isPlaying() ? R.drawable.notification_pause
-                            : R.drawable.notification_play);
+                    isPlaying() ? R.drawable.play_pause
+                            : R.drawable.play_arrow);
             Intent pauseIntent = new Intent(PAUSE_ACTION);
             PendingIntent pausePendingIntent = PendingIntent.getBroadcast(this,
                     0 /* no requestCode */, pauseIntent, 0 /* no flags */);
@@ -1796,16 +1793,16 @@ public class MediaPlaybackService extends Service {
         }
 
         views.setImageViewResource(R.id.pause,
-                (isPlaying() ? R.drawable.notification_pause
-                        : R.drawable.notification_play));
+                (isPlaying() ? R.drawable.play_pause
+                        : R.drawable.play_arrow));
 
         viewsLarge.setImageViewResource(R.id.pause,
-                (isPlaying() ? R.drawable.notification_pause
-                        : R.drawable.notification_play));
+                (isPlaying() ? R.drawable.play_pause
+                        : R.drawable.play_arrow));
 
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder status1 = new NotificationCompat.Builder(
-                this);
+                this,CHANNEL_ONE_ID);
         status1.setContent(views);
         status1.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(
                 "com.android.music.PLAYBACK_VIEWER")
@@ -1818,7 +1815,7 @@ public class MediaPlaybackService extends Service {
             notificationChannel = new NotificationChannel(CHANNEL_ONE_ID,
                     CHANNEL_ONE_NAME, NotificationManager.IMPORTANCE_LOW);
             notificationChannel.enableLights(true);
-            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.setLightColor(Color.GRAY);
             notificationChannel.setShowBadge(true);
             notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
             nm.createNotificationChannel(notificationChannel);
@@ -1887,9 +1884,9 @@ public class MediaPlaybackService extends Service {
                 saveBookmarkIfNeeded();
                 // Reset notification pause function to play function
                 views.setImageViewResource(R.id.pause,
-                        R.drawable.notification_play);
+                        R.drawable.play_arrow);
                 viewsLarge.setImageViewResource(R.id.pause,
-                        R.drawable.notification_play);
+                        R.drawable.play_arrow);
                 Intent playIntent = new Intent(TOGGLEPAUSE_ACTION);
                 PendingIntent playPendingIntent = PendingIntent
                         .getBroadcast(this, 0 /* no requestCode */, playIntent,
@@ -2084,8 +2081,8 @@ public class MediaPlaybackService extends Service {
 
                 // no more clip, then reset playback state icon in status bar
                 if (views != null && viewsLarge != null) {
-                    views.setImageViewResource(R.id.pause, R.drawable.notification_play);
-                    viewsLarge.setImageViewResource(R.id.pause, R.drawable.notification_play);
+                    views.setImageViewResource(R.id.pause, R.drawable.play_arrow);
+                    viewsLarge.setImageViewResource(R.id.pause, R.drawable.play_arrow);
                     Intent playIntent = new Intent(TOGGLEPAUSE_ACTION);
                     PendingIntent playPendingIntent = PendingIntent.getBroadcast(this,
                             0 /* no requestCode */, playIntent, 0 /* no flags */);
