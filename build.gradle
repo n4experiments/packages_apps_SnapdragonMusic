@@ -24,7 +24,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
-        applicationId 'com.android.music'
+        applicationId 'com.aurora.music'
     }
 
     compileOptions {

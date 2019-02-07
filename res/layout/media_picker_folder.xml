@@ -34,7 +34,7 @@
 
     <include layout="@layout/sd_error" />
 
-    <com.android.music.TouchInterceptor
+    <com.aurora.music.TouchInterceptor
         android:id="@+id/folder_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

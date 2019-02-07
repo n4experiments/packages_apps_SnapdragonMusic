@@ -102,7 +102,7 @@
         android:layout_marginEnd="6dp"
         android:layout_toStartOf="@+id/pause"
         android:background="@null"
-        android:src="@drawable/pre" />
+        android:src="@drawable/previous" />
 
     <ImageButton
         android:id="@+id/pause"
@@ -123,7 +123,7 @@
         android:layout_marginEnd="6dp"
         android:layout_toStartOf="@id/exit"
         android:background="@null"
-        android:src="@drawable/nex" />
+        android:src="@drawable/next" />
 
     <ImageButton
         android:id="@+id/exit"

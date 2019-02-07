@@ -31,7 +31,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <!-- weeks -->
-    <com.android.music.VerticalTextSpinner
+    <com.aurora.music.VerticalTextSpinner
         android:id="@+id/weeks"
         android:layout_width="140dip"
         android:layout_height="120dip"

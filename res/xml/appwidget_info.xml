@@ -17,6 +17,6 @@
     android:initialLayout="@layout/statusbar_appwidget_s"
     android:minWidth="320dip"
     android:minHeight="64dip"
-    android:resizeMode="horizontal|vertical"
     android:previewImage="@drawable/icon_widget_s"
-    android:updatePeriodMillis="0"/>
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="0" />

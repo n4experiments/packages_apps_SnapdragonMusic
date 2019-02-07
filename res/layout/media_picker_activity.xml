@@ -20,16 +20,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.android.music.MusicBrowserActivity">
+    tools:context="com.aurora.music.MusicBrowserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.android.music.MusicBrowserActivity">
+        tools:context="com.aurora.music.MusicBrowserActivity">
 
-        <com.android.music.custom.TouchInterceptorScrollView
+        <com.aurora.music.custom.TouchInterceptorScrollView
             android:id="@+id/media_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

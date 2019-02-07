@@ -54,7 +54,6 @@
     <string name="durationformatlong" translatable="false"><xliff:g id="format">%1$d:%3$02d:%5$02d</xliff:g></string>
 
     <!-- Menu item that takes the user back to the top level screen of the music player -->
-    <string name="goto_start">Library</string>
     <!-- Menu item that switches the music player in to party shuffle mode -->
     <string name="party_shuffle">Party shuffle</string>
     <!-- Menu item that switches the music player out of party shuffle mode -->
@@ -145,7 +144,6 @@
     <!-- Title of screen when there are no videos, or if the SD card is busy -->
     <string name="no_videos_title">No videos</string>
     <!-- Title of screen when there are no playlists, or if the SD card is busy -->
-    <string name="no_playlists_title">No playlists</string>
     <!-- Playlist context menu item to delete the selected playlist. -->
     <string name="delete_playlist_menu">Delete</string>
     <!-- Playlist context menu item to edit the selected playlist -->
@@ -157,8 +155,6 @@
     <!-- Dialog box message shown when deleting a playlist-->
     <string name="delete_playlist_message">Do you want to delete \"<xliff:g id="name">%s</xliff:g>\"?</string>
     <!-- Dialog box button -->
-    <string name="delete_playlist_button_ok">OK</string>
-    <string name="delete_playlist_button_cancel">Cancel</string>
     <!-- Transient popup message shown after deleting a playlist -->
     <string name="playlist_deleted_message">Playlist deleted.</string>
     <!-- Transient popup message shown after renaming a playlist -->
@@ -218,23 +214,14 @@
     <!-- Individual song context menu item -->
     <string name="ringtone_menu">Use as phone ringtone</string>
     <!-- Menu item -->
-    <string name="ringtone_menu_short">Use as ringtone</string>
     <!-- Toast after setting a song as phone ringtone -->
     <string name="ringtone_set">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" set as phone ringtone.</string>
     <!-- Toast after setting a song as phone ringtone fail-->
     <string name="ringtone_set_fail">"set as phone ringtone fail."</string>
     <!-- Individual song context menu item -->
-    <string name="ringtone_menu_1">Use as slot 1 ringtone</string>
-    <string name="ringtone_menu_2">Use as slot 2 ringtone</string>
-    <string name="ringtone_menu_sim_name_1">Use as slot 1 \"<xliff:g id="NAME">%s</xliff:g>\" ringtone</string>
-    <string name="ringtone_menu_sim_name_2">Use as slot 2 \"<xliff:g id="NAME">%s</xliff:g>\" ringtone</string>
     <!-- Menu item -->
-    <string name="ringtone_menu_short_1">Use as ringtone 1</string>
-    <string name="ringtone_menu_short_2">Use as ringtone 2</string>
     <!-- Toast after setting a song as phone ringtone -->
-    <string name="ringtone_set_1">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" set as slot 1 ringtone.</string>
     <!-- Toast after setting a song as phone ringtone -->
-    <string name="ringtone_set_2">\"<xliff:g example="Alarm Bell" id="name">%s</xliff:g>\" set as slot 2 ringtone.</string>
     <!-- Context menu item -->
     <string name="play_selection">Play</string>
     <!-- Context menu item -->
@@ -285,9 +272,7 @@
     <!-- Title of time span picker -->
     <string name="weekpicker_title">Set time</string>
     <!-- Do not translate. Background color for currently dragged item in playlist edit mode. -->
-    <color name="dragndrop_background">#e0103010</color>
     <!-- Do not translate. Background color for albums in the artists list view. -->
-    <color name="expanding_child_background">#ff404040</color>
 
     <!-- menu item to save the current list as a new playlist -->
     <string name="save_as_playlist">Save as playlist</string>
@@ -381,31 +366,17 @@
     <string name="music_gesture_next">"Play next track"</string>
 
     <!-- DRM Related Strings -->
-    <string name="no_permission_for_drm">"Sorry, Drm file can not be shared"</string>
     <string name="drm_license_info">Drm license info</string>
-    <string name="drm_ringtone_error">Cannot set CD/SD files as ringtone</string>
-    <string name="drm_right_expired">DRM rights expired</string>
 
-    <string name="action_consumes_rights">Rights will be consumed for playing this media.</string>
-    <string name="rights_expired">Rights expired for the song.</string>
-    <string name="ring_tone_size_exceed">Drm ring tone size can\'t exceed 300kb.</string>
-    <string name="cant_set_ringtone_with_count_perm">Can\'t set DRM file with count permission to ringtone.</string>
-
-    <string name="navigation_drawer_title">"Music"</string>
-    <string name="action_settings">Settings</string>
     <string name="equalizer_button_text">Snapdragon Audio+</string>
     <string name="exit_button_text">Exit</string>
     <string name="action_settings1">Settings1</string>
-    <string name="action_settings2">Settings2</string>
     <string name="action_one">One</string>
-    <string name="action_two">Two</string>
-    <string name="action_three">Three</string>
     <string name="shuffle_all">SHUFFLE ALL</string>
 
     <string name="no_music_found">No Music Found</string>
 
     <!--  Adding new string here for file delete error message -->
-    <string name="song_deleted_error_message">Couldn\'t play the track you requested</string>
     <string name="song_title">Song</string>
     <string name="album_title">Album</string>
     <string name="artist_title">Artist</string>
@@ -420,8 +391,6 @@
     <string name="size_megabytes">MB</string>
     <string name="size_gigabytes">GB</string>
 
-    <string name="favorite">Favorite</string>
-    <string name="no_favorite">No Favorite</string>
     <string name="favorite_playlist">My Favorite</string>
     <string name="can_not_create_my_favorite">Can not create or overrite "My Favorite" playlist</string>
 

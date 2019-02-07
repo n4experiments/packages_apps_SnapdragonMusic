@@ -79,7 +79,7 @@
             android:clipToPadding="false"
             android:padding="5dp">
 
-            <com.android.music.RepeatingImageButton
+            <com.aurora.music.RepeatingImageButton
                 android:id="@+id/previcon"
                 style="@style/ClickBackground"
                 android:layout_width="36dp"
@@ -88,7 +88,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="48dp"
                 android:layout_toLeftOf="@+id/play_pause"
-                android:src="@drawable/pre" />
+                android:src="@drawable/previous" />
 
             <ImageButton
                 android:id="@+id/play_pause"
@@ -99,7 +99,7 @@
                 android:elevation="2dp"
                 android:src="@drawable/play" />
 
-            <com.android.music.RepeatingImageButton
+            <com.aurora.music.RepeatingImageButton
                 android:id="@+id/nexticon"
                 style="@style/ClickBackground"
                 android:layout_width="36dp"
@@ -108,7 +108,7 @@
                 android:layout_marginLeft="48dp"
                 android:layout_marginRight="12dp"
                 android:layout_toEndOf="@+id/play_pause"
-                android:src="@drawable/nex" />
+                android:src="@drawable/next" />
 
         </RelativeLayout>
 

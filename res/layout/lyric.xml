@@ -31,7 +31,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.android.music.lyric.LyricView
+    <com.aurora.music.lyric.LyricView
         android:id="@id/lv_lyric"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

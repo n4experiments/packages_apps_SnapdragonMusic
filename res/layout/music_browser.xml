@@ -32,7 +32,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.android.music.custom.MusicPanelLayout
+    <com.aurora.music.custom.MusicPanelLayout
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,7 +68,7 @@
 
             <include layout="@layout/audio_player_modified" />
         </LinearLayout>
-    </com.android.music.custom.MusicPanelLayout>
+    </com.aurora.music.custom.MusicPanelLayout>
 
     <RelativeLayout
         android:id="@+id/drawerPane"

@@ -28,8 +28,8 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="?android:attr/colorBackground"
-    android:layout_height="128dp">
+    android:layout_height="128dp"
+    android:background="?android:attr/colorBackground">
 
     <ImageView
         android:id="@+id/icon"
@@ -122,7 +122,7 @@
             android:layout_toStartOf="@+id/pause"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/pre" />
+            android:src="@drawable/previous" />
 
         <ImageButton
             android:id="@+id/pause"
@@ -143,7 +143,7 @@
             android:layout_toEndOf="@id/pause"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/nex" />
+            android:src="@drawable/next" />
     </RelativeLayout>
 
 </RelativeLayout>

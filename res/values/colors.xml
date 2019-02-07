@@ -18,7 +18,6 @@
 <resources>
 
     <color name="colorAccent">#FF6050</color>
-    <color name="colorAccentTranslucent">#88FF6050</color>
     <color name="colorPrimary">#FFF</color>
     <color name="colorPrimaryDark">#EEE</color>
     <color name="colorBackground">#FAFAFA</color>
@@ -27,7 +26,6 @@
     <color name="colorTextSecondary">#545454</color>
 
     <color name="colorWhite">#FFF</color>
-    <color name="colorBlack">#000</color>
     <color name="colorGrey">#D8D8D8</color>
     <color name="colorTransparent">#00000000</color>
 
@@ -37,8 +35,5 @@
     <color name="black_translucence_text">#5a000000</color>
 
     <color name="seek_color">@color/colorAccent</color>
-    <color name="wave_color">@color/colorAccent</color>
-    <color name="wave_color_inactive">@color/colorBlack</color>
     <color name="colorTouchHint">#66FFFFFF</color>
-    <color name="click_bg">#66242424</color>
 </resources>

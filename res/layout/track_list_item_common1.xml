@@ -79,7 +79,7 @@
 
         <view
             android:id="@+id/play_animator"
-            class="com.android.music.TrackBrowserFragment$WaveView"
+            class="com.aurora.music.TrackBrowserFragment$WaveView"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="25dp"
