@@ -31,9 +31,10 @@
 
 package com.aurora.music;
 
-import android.annotation.ColorInt;
 import android.graphics.Color;
-import android.support.v7.graphics.Palette;
+
+import androidx.annotation.ColorInt;
+import androidx.palette.graphics.Palette;
 
 public class PaletteParser {
 

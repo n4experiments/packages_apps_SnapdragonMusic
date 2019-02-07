@@ -76,7 +76,6 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
 import android.provider.MediaStore;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -84,6 +83,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import androidx.core.app.NotificationCompat;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -1786,7 +1787,7 @@ public class MediaPlaybackService extends Service {
                     .setOngoing(true)
                     .setPriority(NotificationCompat.PRIORITY_MAX)
                     .setSmallIcon(R.drawable.app_music)
-                    .setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
+                    .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                             .setShowActionsInCompactView(0, 1, 2)
                             .setMediaSession(mSessionCompat.getSessionToken())
                             .setShowCancelButton(true))

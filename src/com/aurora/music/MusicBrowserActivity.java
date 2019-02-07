@@ -46,8 +46,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -56,6 +54,9 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.aurora.music.MusicUtils.ServiceToken;
 import com.aurora.music.custom.FragmentsFactory;

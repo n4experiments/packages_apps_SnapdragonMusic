@@ -34,7 +34,6 @@ package com.aurora.music;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.annotation.ColorInt;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -68,8 +67,6 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.Log;
@@ -98,6 +95,10 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
 
 import com.aurora.music.MusicUtils.ServiceToken;
 import com.aurora.music.custom.FragmentsFactory;

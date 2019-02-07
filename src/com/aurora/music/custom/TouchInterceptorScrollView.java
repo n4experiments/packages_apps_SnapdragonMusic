@@ -33,9 +33,10 @@ package com.aurora.music.custom;
 
 
 import android.content.Context;
-import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingChildHelper;
 import android.util.AttributeSet;
+
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.view.NestedScrollingChildHelper;
 
 import com.aurora.music.TouchInterceptor;
 

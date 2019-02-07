@@ -66,8 +66,6 @@ import android.os.RemoteException;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Audio.Playlists;
 import android.provider.MediaStore.Video.VideoColumns;
-import android.support.annotation.Nullable;
-import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -86,6 +84,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
 
 import com.aurora.music.MusicUtils.ServiceToken;
 import com.aurora.music.TrackBrowserActivityFragment.TrackListAdapter.ViewHolder;

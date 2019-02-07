@@ -31,8 +31,9 @@
 
 package com.aurora.music;
 
-import android.annotation.ColorInt;
 import android.graphics.Color;
+
+import androidx.annotation.ColorInt;
 
 public class ColorUtil {
 

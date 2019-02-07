@@ -31,7 +31,6 @@
 
 package com.aurora.music.adapters;
 
-import android.annotation.ColorInt;
 import android.annotation.SuppressLint;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
@@ -43,8 +42,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v7.graphics.Palette;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +52,10 @@ import android.widget.RelativeLayout;
 import android.widget.SectionIndexer;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
 
 import com.aurora.music.AlbumBrowserFragment;
 import com.aurora.music.MediaPlaybackActivity;
