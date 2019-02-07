@@ -29,7 +29,8 @@
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialLayout="@layout/statusbar_appwidget_l"
-    android:minWidth="294dip"
+    android:minWidth="320dip"
     android:minHeight="128dip"
     android:previewImage="@drawable/icon_widget_l"
-    android:updatePeriodMillis="0"></appwidget-provider>
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="0" />

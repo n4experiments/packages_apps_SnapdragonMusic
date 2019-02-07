@@ -28,6 +28,7 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="?android:attr/colorBackground"
     android:layout_height="128dp">
 
     <ImageView
@@ -47,7 +48,7 @@
         android:layout_margin="8dp"
         android:background="@null"
         android:src="@drawable/close"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/music_info"

@@ -74,7 +74,7 @@ public class MediaAppWidgetProvider extends AppWidgetProvider {
             views.setTextViewText(R.id.artist, context.getText(R.string.widget_initial_text));
             views.setViewVisibility(R.id.album, View.GONE);
             views.setImageViewResource(R.id.icon, R.drawable.album_cover_background);
-            views.setImageViewResource(R.id.pause, R.drawable.notification_play);
+            views.setImageViewResource(R.id.pause, R.drawable.play_arrow);
             /* everytime pushUpdate(updateAppWidget) should do linkButtons, otherwise the buttons will not work */
             linkButtons(context, views, false /* not playing */);
             pushUpdate(context, appWidgetIds, views);
@@ -213,14 +213,14 @@ public class MediaAppWidgetProvider extends AppWidgetProvider {
         // Set correct drawable for pause state
         final boolean playing = service.isPlaying();
         if (playing) {
-            views.setImageViewResource(R.id.pause, R.drawable.notification_pause);
+            views.setImageViewResource(R.id.pause, R.drawable.play_pause);
         } else {
             if (titleName == null && !mPauseState && (errorState == null)) {
                 views.setViewVisibility(R.id.trackname, View.GONE);
                 views.setTextViewText(R.id.artist, res.getText(R.string.emptyplaylist));
                 views.setViewVisibility(R.id.album, View.GONE);
             }
-            views.setImageViewResource(R.id.pause, R.drawable.notification_play);
+            views.setImageViewResource(R.id.pause, R.drawable.play_arrow);
         }
 
         // Link actions buttons to intents
