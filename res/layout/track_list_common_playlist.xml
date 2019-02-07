@@ -30,15 +30,11 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/iconlayoutheight"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="4dp"
+    android:layout_margin="4dp"
     android:background="@color/colorBackground"
-    android:elevation="2dp"
-    android:orientation="vertical"
-    android:scaleType="fitXY">
+    android:elevation="2dp">
 
     <TableLayout
         android:id="@+id/relativeLayout1"
@@ -53,36 +49,33 @@
             <ImageView
                 android:id="@+id/icon"
                 android:layout_width="@dimen/icontile"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/icontile"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:minHeight="160dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/album_cover" />
+                android:src="@drawable/album_cover_background" />
 
             <ImageView
                 android:id="@+id/icon1"
                 android:layout_width="@dimen/icontile"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/icontile"
                 android:layout_margin="2dp"
-                android:layout_toEndOf="@+id/icon"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
-                android:src="@drawable/album_cover"
-                android:visibility="gone" />
+                android:src="@drawable/album_cover_background" />
         </TableRow>
 
-        <TableRow android:visibility="gone">
+        <TableRow>
 
             <ImageView
                 android:id="@+id/icon2"
                 android:layout_width="@dimen/icontile"
                 android:layout_height="@dimen/icontile"
-                android:layout_below="@+id/icon"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@drawable/album_cover" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/album_cover_background" />
 
             <ImageView
                 android:id="@+id/icon3"
@@ -90,8 +83,8 @@
                 android:layout_height="@dimen/icontile"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@drawable/album_cover" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/album_cover_background" />
         </TableRow>
     </TableLayout>
 
@@ -99,18 +92,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayout1"
-        android:layout_marginTop="-6dp">
+        android:layout_below="@+id/relativeLayout1">
 
         <TextView
             android:id="@+id/line1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="@dimen/iconpaddingtop"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/play_indicator"
             android:ellipsize="end"
-            android:paddingStart="14dp"
+            android:paddingStart="16dp"
+            android:paddingTop="@dimen/iconpaddingtop"
+            android:paddingEnd="8dp"
+            android:paddingBottom="@dimen/iconpaddingtop"
             android:singleLine="true"
             android:text="@string/albums_menu"
             android:textSize="16sp" />
@@ -122,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:paddingTop="@dimen/iconpaddingtop"
             android:paddingBottom="@dimen/iconpaddingtop"
             android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />

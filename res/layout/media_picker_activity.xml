@@ -68,114 +68,108 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:theme="@style/ToolbarTheme">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="match_parent">
 
-            <androidx.core.widget.NestedScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="@dimen/layoutsize">
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/album_cover_background" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/fab_bg"
+                        android:elevation="2dp"
+                        android:src="@drawable/play" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/layoutsize">
+                        android:layout_height="?actionBarSize">
 
                         <ImageView
-                            android:id="@+id/imageView1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/album_cover_background" />
+                            android:id="@+id/imageView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/ic_material_home_as_up_arrow" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_margin="8dp"
-                            android:background="@drawable/fab_bg"
-                            android:elevation="2dp"
-                            android:src="@drawable/play" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="?actionBarSize">
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@drawable/ic_material_home_as_up_arrow" />
-
-                            <ImageView
-                                android:id="@+id/imageView3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="15dp"
-                                android:src="@drawable/ic_search" />
-                        </RelativeLayout>
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_search" />
                     </RelativeLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/bottom_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/bottom_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="?actionBarSize"
-                        android:layout_alignParentBottom="true"
-                        android:orientation="horizontal"
-                        android:paddingStart="20dp">
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_horizontal|center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="3"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center_horizontal|center"
-                            android:layout_weight="3"
-                            android:orientation="vertical">
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/unknown_artist_name"
+                            android:textSize="16sp" />
 
-                            <TextView
-                                android:id="@+id/textView1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:text="@string/unknown_artist_name"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/textView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:text="@string/unknown_artist_name"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/menu_overflow"
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end|center_horizontal|center"
-                            android:layout_marginEnd="10dp"
-                            android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/unknown_artist_name"
+                            android:textSize="14sp" />
                     </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/menu_overflow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_horizontal|center"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
                 </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
     </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

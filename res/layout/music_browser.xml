@@ -85,6 +85,7 @@
             android:id="@+id/header_art"
             android:layout_width="match_parent"
             android:layout_height="176dp"
+            android:src="@drawable/album_cover_background"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop" />
 

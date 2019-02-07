@@ -1786,7 +1786,7 @@ public class MediaPlaybackService extends Service {
                     .setLargeIcon(icon)
                     .setOngoing(true)
                     .setPriority(NotificationCompat.PRIORITY_MAX)
-                    .setSmallIcon(R.drawable.app_music)
+                    .setSmallIcon(R.drawable.songs)
                     .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                             .setShowActionsInCompactView(0, 1, 2)
                             .setMediaSession(mSessionCompat.getSessionToken())
@@ -1860,7 +1860,7 @@ public class MediaPlaybackService extends Service {
             mBuilder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(
                     "com.aurora.music.PLAYBACK_VIEWER")
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0));
-            mBuilder.setSmallIcon(R.drawable.app_music);
+            mBuilder.setSmallIcon(R.drawable.songs);
             status = mBuilder.build();
             status.bigContentView = viewsLarge;
             if (isPlaying()) {

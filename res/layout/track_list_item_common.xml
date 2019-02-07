@@ -33,14 +33,14 @@
     <!-- icon is used for albumart, the grabber in edit playlist mode,
     and the playlist icon in the list of playlists -->
 
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridLayout
         android:id="@+id/iconTabbedView"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dp"
-        android:background="#e1e1e1"
+        android:background="?android:attr/colorBackground"
         android:columnCount="2"
         android:rowCount="2">
 
@@ -48,45 +48,45 @@
             android:id="@+id/img1"
             android:layout_width="@dimen/icon_tile_size"
             android:layout_height="@dimen/icon_tile_size"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="3dp"
-            android:layout_marginRight="1dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginBottom="1dp"
             android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/img2"
             android:layout_width="@dimen/icon_tile_size"
             android:layout_height="@dimen/icon_tile_size"
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginBottom="1dp"
             android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/img3"
             android:layout_width="@dimen/icon_tile_size"
             android:layout_height="@dimen/icon_tile_size"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginBottom="3dp"
             android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/img4"
             android:layout_width="@dimen/icon_tile_size"
             android:layout_height="@dimen/icon_tile_size"
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginBottom="3dp"
             android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </GridLayout>
 
     <!-- The height is set to half the height of the parent, which is 64 dip -->
@@ -94,9 +94,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
         android:layout_toStartOf="@id/play_indicator"
-        android:layout_toEndOf="@+id/iconTabbedView"
-        android:paddingStart="16dip">
+        android:layout_toEndOf="@+id/iconTabbedView">
 
         <TextView
             android:id="@+id/line1"
@@ -123,8 +123,7 @@
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="@dimen/album_text_size"
-            android:visibility="visible" />
+            android:textSize="@dimen/album_text_size" />
     </RelativeLayout>
 
     <ImageView
@@ -132,10 +131,7 @@
         style="@style/OverflowBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/duration"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="10dip"
         android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
-
 </merge>

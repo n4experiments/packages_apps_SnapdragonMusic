@@ -41,23 +41,13 @@
         android:id="@+id/album_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="@dimen/album_left_margin">
-
-        <ImageView
-            android:id="@+id/list_menu_button"
-            style="@style/OverflowBackground"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:clickable="true"
-            android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@id/list_menu_button"
             android:orientation="vertical">
             <!-- The height is set to half the height of the parent, which is 64 dip -->
@@ -91,5 +81,17 @@
                 android:textSize="@dimen/album_artist_name"
                 android:visibility="visible" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/list_menu_button"
+            style="@style/OverflowBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
+
     </RelativeLayout>
 </merge>

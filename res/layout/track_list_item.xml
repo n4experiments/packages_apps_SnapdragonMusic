@@ -30,7 +30,7 @@
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:padding="4dp">
@@ -40,28 +40,23 @@
         the playlist icon in the list of playlists
     -->
 
-    <RelativeLayout
-        android:id="@+id/iconLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:paddingStart="8dip">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="48dip"
-            android:layout_height="48dip" />
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:src="@drawable/album_cover_background"
+        android:layout_centerVertical="true" />
 
     <!-- The height is set to half the height of the parent, which is 64 dip -->
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_toStartOf="@+id/menuLayout"
-        android:layout_toEndOf="@+id/iconLayout"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:layout_toEndOf="@+id/icon">
 
         <TextView
             android:id="@+id/line1"
@@ -96,8 +91,9 @@
     <RelativeLayout
         android:id="@+id/menuLayout"
         android:layout_width="72dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:gravity="center_vertical">
 
         <view
@@ -108,7 +104,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
             android:layout_toStartOf="@+id/play_indicator"
             android:background="@android:color/transparent" />
 
@@ -120,7 +116,6 @@
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="10dip"
             android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
     </RelativeLayout>
 

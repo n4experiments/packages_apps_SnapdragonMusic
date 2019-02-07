@@ -32,34 +32,29 @@
     android:id="@+id/childID"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/track_list_item_group_ripple"
-    android:elevation="2dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:elevation="1dp"
     android:gravity="center_vertical"
     android:padding="4dp">
 
     <!-- icon is used for albumart, the grabber in edit playlist mode, and
     the playlist icon in the list of playlists -->
-    <RelativeLayout
-        android:id="@+id/iconLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:paddingStart="8dip">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp" />
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/album_cover_background"
+        android:layout_marginStart="8dp" />
 
     <!-- The height is set to half the height of the parent, which is 64 dip -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_toStartOf="@+id/play_indicator_child"
-        android:layout_toEndOf="@+id/iconLayout"
-        android:paddingStart="8dip">
+        android:layout_toEndOf="@+id/icon">
 
         <TextView
             android:id="@+id/line1"
@@ -94,10 +89,8 @@
         style="@style/OverflowBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/duration"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="10dip"
         android:src="@drawable/ic_menu_moreoverflow_normal_holo_light" />
 
 </RelativeLayout>
