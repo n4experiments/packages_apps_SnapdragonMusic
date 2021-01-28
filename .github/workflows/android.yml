@@ -20,4 +20,4 @@ jobs:
     - name: Install gradle
       run: export VERSION=6.5.1 && wget https://services.gradle.org/distributions/gradle-${VERSION}-bin.zip -P /tmp && unzip -d ~/gradle /tmp/gradle-${VERSION}-bin.zip && ln -s ~/gradle/gradle-${VERSION} ~/gradlehome
     - name: Build with Gradle
-      run: GRADLE_HOME=~/gradlehome $GRADLE_HOME/bin/gradle build
+      run: export GRADLE_HOME=~/gradlehome PATH="$GRADLE_HOME/bin:$PATH" && gradle build
