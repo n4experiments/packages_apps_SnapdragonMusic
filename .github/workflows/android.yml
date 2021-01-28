@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Grant execute permission for gradlew
-      run: sudo apt update && sudo apt install gradle
+    - name: Install gradle
+      run: sudo apt update && sudo apt install gradle && gradle wrapper && chmod +x gradlew && cp gradle-wrapper.properties gradle/wrapper/ && ./gradlew wrapper 
     - name: Build with Gradle
-      run: gradle build
+      run: ./gradlew build
