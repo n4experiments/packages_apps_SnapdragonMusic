@@ -21,3 +21,13 @@ jobs:
       run: export VERSION=6.5.1 && wget https://services.gradle.org/distributions/gradle-${VERSION}-bin.zip -P /tmp && unzip -d ~/gradle /tmp/gradle-${VERSION}-bin.zip && ln -s ~/gradle/gradle-${VERSION} ~/gradlehome
     - name: Build with Gradle
       run: export GRADLE_HOME=~/gradlehome PATH="$GRADLE_HOME/bin:$PATH" && unset ANDROID_NDK_HOME && gradle build
+    - name: Upload apks (1/2)
+      uses: actions/upload-artifact@v2
+      with:
+        name: other_apks
+        path: app/build/outputs/apk/*/*.apk
+    - name: Upload apks (2/2)
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-release.apk
+        path: app/build/outputs/apk/release/app-release.apk
