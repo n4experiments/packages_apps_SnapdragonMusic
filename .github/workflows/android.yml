@@ -18,6 +18,6 @@ jobs:
       with:
         java-version: 1.8
     - name: Install gradle
-      run: sudo apt update && sudo apt install gradle && gradle wrapper; chmod +x gradlew && cp gradle-wrapper.properties gradle/wrapper/ && ./gradlew wrapper 
+      run: sudo apt update && sudo apt install gradle && gradle wrapper; chmod +x gradlew && cp gradle-wrapper.properties gradle/wrapper/ && cp gradle-wrapper.properties /home/runner/.gradle/daemon/4.4.1/gradle/wrapper && ./gradlew wrapper 
     - name: Build with Gradle
       run: ./gradlew build
